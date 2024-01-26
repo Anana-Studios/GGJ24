@@ -20,7 +20,7 @@ public class AudioRequester : MonoBehaviour
                 "\tA music track for the level. \n" +
                 "\tOr an ambiance sfx.")]
     private bool playOnAwake;
-
+    [SerializeField]
     private AudioSource _sourceToUse;
     private Dictionary<string, int> _soundListDictionary = new Dictionary<string, int>();
 
@@ -29,16 +29,29 @@ public class AudioRequester : MonoBehaviour
         _soundListDictionary.Add("Sfx", 0);
         _soundListDictionary.Add("Music", 1);
         _soundListDictionary.Add("Dialogue", 2);
+    }
+    private void Start()
+    {
+        SetAudiosource();
 
-        _sourceToUse = AudioManager.aMInstance.SendSoundSource(_soundListDictionary[listToSearch.ToString()], soundFile);
-        
         if (playOnAwake) { PlayAudio(); }
     }
-    private void PlayAudio()
-    {        
+    private void SetAudiosource()
+    {
+        try
+        {
+            _sourceToUse = AudioManager.aMInstance.SendSoundSource(_soundListDictionary[listToSearch.ToString()], soundFile);
+        }
+        catch 
+        {
+            Debug.LogError("Couldn\'t find source.");
+        }
+    }
+    public void PlayAudio()
+    {
         _sourceToUse.Play();
     }
-    private void StopAudio()
+    public void StopAudio()
     {
         _sourceToUse.Stop();
     }

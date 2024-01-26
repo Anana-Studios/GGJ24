@@ -101,6 +101,7 @@ public class AudioManager : MonoBehaviour
         GameObject newAudiosource = new GameObject();
         newAudiosource.name = $"{soundName} Audiosource";
         newAudiosource.AddComponent<AudioSource>();
+        newAudiosource.GetComponent<AudioSource>().playOnAwake = false;
         newAudiosource.transform.parent = persistentSnd ? transform : _npSoundsSourceParent.transform;
         return newAudiosource.GetComponent<AudioSource>();
     }
@@ -118,10 +119,10 @@ public class AudioManager : MonoBehaviour
                     soundFound = FindSoundSource(sfxDictionary, fileToSearch);
                     break;
                 case 1:
-                    soundFound = FindSoundSource(sfxDictionary, fileToSearch);
+                    soundFound = FindSoundSource(musicDictionary, fileToSearch);
                     break;
                 case 2:
-                    soundFound = FindSoundSource(sfxDictionary, fileToSearch);
+                    soundFound = FindSoundSource(dialogueDictionary, fileToSearch);
                     break;
             }
             return soundFound.source;
@@ -142,14 +143,4 @@ public class AudioManager : MonoBehaviour
             return null;
         }
     }
-    /*
-    private void PlayOverlappedSfxByIndex(int audioIndx)
-    {
-        Sound soundToPlay = SoundToFind(sfx, audioIndx, null);
-        if (soundToPlay != null)
-        {
-            soundToPlay.source.PlayOneShot(soundToPlay.clip);
-        }
-    }
-    */
 }
