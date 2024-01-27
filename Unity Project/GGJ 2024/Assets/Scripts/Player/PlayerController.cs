@@ -7,8 +7,14 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 1.0f;
+    private float speed = 1.0f, throwForce = 3.0f;
+    [SerializeField]
+    private Transform grabPivot;
 
+    [HideInInspector]
+    public GrabbableObj _objInReach;
+
+    private bool _grabbingObj = false;
     private Camera m_Camera;
     private Rigidbody _rigidbody;
 
@@ -39,6 +45,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         MovePlayer();
+        GrabObj();
+        ThrowObj();
     }
 
     private void MovePlayer()
@@ -50,5 +58,27 @@ public class PlayerController : MonoBehaviour
         }
         transform.eulerAngles = new Vector3(0, Mathf.Atan2(_moveInput.x, _moveInput.y) * Mathf.Rad2Deg, 0);
         _rigidbody.velocity = transform.forward * speed;
+    }
+    private void GrabObj()
+    {
+        if(_grabInput && _objInReach != null && !_objInReach.isGrabbed)
+        {
+            _objInReach.isGrabbed = true;
+            _objInReach.GetComponent<Rigidbody>().useGravity = false;
+            _objInReach.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            _objInReach.transform.position = grabPivot.position;
+            _objInReach.transform.rotation = grabPivot.rotation;
+            _objInReach.transform.SetParent(grabPivot.transform, true);
+            _grabbingObj = true;
+        }
+    }
+    private void ThrowObj()
+    {
+        if(_throwInput && _grabbingObj)
+        {
+            _grabbingObj = false;
+            _objInReach.ResetObj();
+            _objInReach.GetComponent<Rigidbody>().AddForce((transform.forward + Vector3.up) * throwForce, ForceMode.Impulse);
+        }
     }
 }
