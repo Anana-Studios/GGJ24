@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class IngredientsPooling : MonoBehaviour
 {
-    [Header("Pool Parametera")]
+    [Header("Pool Parameters")]
 
     public GameObject ingredientPrefab;
     public Transform supplyPosition;
@@ -31,14 +31,14 @@ public class IngredientsPooling : MonoBehaviour
 
     [ContextMenu("Get New Ingredient")]
     public void GetIngredient()
-    {
-      
+    {  
         var newIngredient = GetPooledObject();
         if (_canSupply && newIngredient != null)
         {
             _canSupply = false;
             newIngredient.transform.position = supplyPosition.position;
-           newIngredient.SetActive(true);
+            newIngredient.GetComponent<ObjectController>().SetFirstValues();
+            newIngredient.SetActive(true);
         }
         else
         {

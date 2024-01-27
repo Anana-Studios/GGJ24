@@ -111,6 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612d26992c53d3c41a9a84343950942d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _firstMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  _newMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   _isLaunched: 0
   _isReady: 0
   _needsCut: 1
