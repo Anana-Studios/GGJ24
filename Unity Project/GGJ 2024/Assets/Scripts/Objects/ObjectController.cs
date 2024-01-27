@@ -57,7 +57,8 @@ public class ObjectController : MonoBehaviour
         {
             _needsCook = false;
             SetPrepare(collision);
-        }   
+        }
+        
     }
       
     public void OnLaunch()

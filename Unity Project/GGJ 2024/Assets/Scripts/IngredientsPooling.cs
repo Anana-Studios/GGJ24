@@ -37,8 +37,8 @@ public class IngredientsPooling : MonoBehaviour
         {
             _canSupply = false;
             newIngredient.transform.position = supplyPosition.position;
-            newIngredient.GetComponent<ObjectController>().SetFirstValues();
             newIngredient.SetActive(true);
+            if (newIngredient.GetComponent<ObjectController>()!=null) newIngredient.GetComponent<ObjectController>().SetFirstValues();
         }
         else
         {
