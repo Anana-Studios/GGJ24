@@ -23,7 +23,7 @@ public class Sound
                 "When this is not checked the sound will be destroyed when loading a new scene and also will be removed from the managers sound list.")]
     public bool persistentSound;
     
-    [Tooltip("If available, attach the scene source that will play this sound. \n " +
+    [Tooltip("If available, attach the scene source that will play this sound. \n\n " +
                 "In the case of not having a defined source, the manager will create a new one with the correspondig settings for this sound.")]
     public AudioSource source;
     
@@ -38,11 +38,13 @@ public class Sound
     [Range(-3f, 3f)]
     public float pitch = 1;
     
-    [Tooltip("This value will assign the sound's stereo panning in it's audiosource.\n\nLowest being left and highest being the right.")]
+    [Tooltip("This value will assign the sound's stereo panning in it's audiosource.\n\n" +
+                "Lowest being left and highest being the right.")]
     [Range(-1f, 1f)]
     public float stereoPan = 0;
     
-    [Tooltip("This value will assign the sound's spatial blend in it's audiosource.\n\nThis sets how will the sound be affected by the audiosource's scene position.")]
+    [Tooltip("This value will assign the sound's spatial blend in it's audiosource.\n\n" +
+                "This sets how will the sound be affected by the audiosource's scene position.")]
     [Range(0.1f, 1f)]
     public float spatialBlend = 0;
     
