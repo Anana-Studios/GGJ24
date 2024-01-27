@@ -5,15 +5,19 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class ObjectController : MonoBehaviour
 {
+    private Coroutine _coroutine;
 
     [Header("Meshes")]
     private MeshFilter _mf;
     [SerializeField] private Mesh _firstMesh, _newMesh;
+
     [Header("Values")]
     [SerializeField] private bool _isLaunched = false, _isReady=false;
     [SerializeField] private bool _needsCut = true, _needsCook = true;
     private bool _needsCutO, _needsCookO;
     [SerializeField]  private float _weight=0.5f;
+
+    [SerializeField] private float _timeToRot = 30;
 
     private void Awake()
     {
@@ -23,11 +27,12 @@ public class ObjectController : MonoBehaviour
         CheckReadiness();
     }
 
-    public void SetFirstValues()
+    public void Initialize()
     {
         _needsCut = _needsCutO;
         _needsCook = _needsCookO;   
         _mf.mesh = _firstMesh;
+        GetRotten();
     }
 
     private void CheckReadiness()
@@ -42,10 +47,10 @@ public class ObjectController : MonoBehaviour
             if (collision.gameObject.CompareTag("Player"))
             {
                 //Invoke Function to stun player
-                OnLaunch();
+                EndLaunch();
 
             }
-            else OnLaunch();          
+            else EndLaunch();          
         }
        
         if (collision.gameObject.CompareTag("CuttingZone") && _needsCut && collision.gameObject.GetComponent<CZone>().canUse)
@@ -61,16 +66,31 @@ public class ObjectController : MonoBehaviour
         
     }
       
-    public void OnLaunch()
+    public void EndLaunch()
     {
         _isLaunched = false;
         gameObject.SetActive(false);
     }
     public void SetPrepare(Collision collision)
     {
+        StopCoroutine(_coroutine);
         _mf.mesh = _newMesh;
         CheckReadiness();
         collision.gameObject.GetComponent<CZone>().newIngredient = this.gameObject;
         collision.gameObject.GetComponent<CZone>().StartPreparing();
+      
+    }
+
+    public void GetRotten()
+    {
+        _coroutine = StartCoroutine(Deactivate());
+    }
+
+    IEnumerator Deactivate()
+    {
+        yield return new WaitForSecondsRealtime(_timeToRot);
+        gameObject.SetActive(false);
+        StopCoroutine(Deactivate());
+
     }
 }

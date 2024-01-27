@@ -118,6 +118,7 @@ MonoBehaviour:
   _needsCut: 1
   _needsCook: 1
   _weight: 0.5
+  _timeToRot: 8
 --- !u!54 &1714388726683747482
 Rigidbody:
   m_ObjectHideFlags: 0

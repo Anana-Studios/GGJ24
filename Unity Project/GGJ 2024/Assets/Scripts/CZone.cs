@@ -35,6 +35,7 @@ public class CZone : MonoBehaviour
             newIngredient.GetComponent<MeshRenderer>().enabled = true;
             newIngredient.GetComponent<Collider>().enabled = true;
             newIngredient.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            newIngredient.GetComponent<ObjectController>().GetRotten();
 
             canUse = true;
             newIngredient = null;
