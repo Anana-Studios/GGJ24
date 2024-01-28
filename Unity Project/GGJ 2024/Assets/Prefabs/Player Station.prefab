@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 505954986952247194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8246836584367209177}
   m_Father: {fileID: 0}
@@ -99,8 +99,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8575797553419829067, guid: a3879ae0e5d69b248a617409b085ab85, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8575797553419829067, guid: a3879ae0e5d69b248a617409b085ab85, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 138054cd61fc2e946a3225eee81c7e1f, type: 2}
     - target: {fileID: -7156975944054827978, guid: a3879ae0e5d69b248a617409b085ab85, type: 3}
       propertyPath: m_IsActive
       value: 1
