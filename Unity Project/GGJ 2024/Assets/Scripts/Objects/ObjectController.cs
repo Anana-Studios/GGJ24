@@ -46,11 +46,7 @@ public class ObjectController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (_isReady && other.CompareTag("PlayerZone"))
-        {
-            other.GetComponent<PlayerZone>().CheckIngredient(_typeOfIngredient);
-            gameObject.SetActive(false);
-        }
+        
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -69,18 +65,22 @@ public class ObjectController : MonoBehaviour
         {
             _needsCut = false;
             _mf.mesh = _newMesh;
-            SetPrepare(collision);
             if (isSausage)
             {
                 _needsCook = true;
             }
+            SetPrepare(collision);
         }      
         if (collision.gameObject.CompareTag("CookingZone") && _needsCook && collision.gameObject.GetComponent<CZone>().canUse)
         {
             _needsCook = false;
             SetPrepare(collision);
         }
-        
+        if (_isReady && collision.gameObject.CompareTag("PlayerZone"))
+        {
+            collision.gameObject.GetComponent<PlayerZone>().CheckIngredient(_typeOfIngredient);
+            gameObject.SetActive(false);
+        }
     }
       
     public void EndLaunch()

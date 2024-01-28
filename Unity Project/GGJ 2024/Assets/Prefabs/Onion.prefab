@@ -141,11 +141,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612d26992c53d3c41a9a84343950942d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _typeOfIngredient: Onion
   _firstMesh: {fileID: 3206863936417003773, guid: 7f863214fc47f8440ae31b8c5962f2c6, type: 3}
   _newMesh: {fileID: -5808352388633537133, guid: 5e32c4c7f59eb2f429eb48e00c87cc70, type: 3}
+  isSausage: 0
   _isLaunched: 0
   _isReady: 0
   _needsCut: 1
   _needsCook: 0
   _weight: 0.5
-  _timeToRot: 25
+  _timeToRot: 10

@@ -9,9 +9,15 @@ public class PlayerZone : MonoBehaviour
     public string id = "";
 
     [SerializeField] private bool _hasSausage = false, _hasOnion = false, _hasChili = false, _hasBeans = false;
+    [SerializeField] private GameObject _sausage, _onion, _chili, _beans;
 
-
-
+    private void Update()
+    {
+        _beans.SetActive(_hasBeans);
+        _sausage.SetActive(_hasSausage);
+        _onion.SetActive(_hasOnion);
+        _chili.SetActive(_hasChili);
+    }
     public void CheckIngredient(string typeOfIngredient)
     {
             switch (typeOfIngredient)

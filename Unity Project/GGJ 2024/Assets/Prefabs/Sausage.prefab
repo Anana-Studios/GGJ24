@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612d26992c53d3c41a9a84343950942d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _typeOfIngredient: Sausage
   _firstMesh: {fileID: 3659640168455282510, guid: 08b170a1abbbbd54abc0a202c5a5c3e0, type: 3}
   _newMesh: {fileID: -6415556374723166846, guid: f1b4cca802f0e5945a382ba72cb9730c, type: 3}
   isSausage: 1
@@ -136,7 +137,7 @@ MonoBehaviour:
   _needsCut: 1
   _needsCook: 0
   _weight: 0.5
-  _timeToRot: 25
+  _timeToRot: 10
 --- !u!136 &3962674298029867691
 CapsuleCollider:
   m_ObjectHideFlags: 0

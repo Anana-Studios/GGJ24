@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612d26992c53d3c41a9a84343950942d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _typeOfIngredient: Beans
   _firstMesh: {fileID: -4718037901536073631, guid: 6cb22081c4ae84c459c01f61389046c7, type: 3}
   _newMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   isSausage: 0
@@ -136,7 +137,7 @@ MonoBehaviour:
   _needsCut: 0
   _needsCook: 0
   _weight: 0.5
-  _timeToRot: 25
+  _timeToRot: 10
 --- !u!136 &6966080296904313504
 CapsuleCollider:
   m_ObjectHideFlags: 0
