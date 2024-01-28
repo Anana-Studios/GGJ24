@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class ObjectController : MonoBehaviour
 {
-    private Coroutine _coroutine;
+    public Coroutine _coroutine;
 
     [Header("Meshes")]
     private MeshFilter _mf;

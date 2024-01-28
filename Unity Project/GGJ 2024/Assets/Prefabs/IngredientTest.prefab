@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3808028936015140009}
   - component: {fileID: 2483053849310342151}
   - component: {fileID: 1714388726683747482}
+  - component: {fileID: 1312124203186640844}
   m_Layer: 0
   m_Name: IngredientTest
   m_TagString: Untagged
@@ -118,7 +119,7 @@ MonoBehaviour:
   _needsCut: 1
   _needsCook: 1
   _weight: 0.5
-  _timeToRot: 8
+  _timeToRot: 30
 --- !u!54 &1714388726683747482
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -135,3 +136,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1312124203186640844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438852291624236456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c142cc3719d5d4e80c3fa5d6edc959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGrabbed: 0

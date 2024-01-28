@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager aMInstance;
+    public static AudioManager instance;
 
     public List<Sound> sfx, music, dialogues;
     
@@ -16,13 +16,13 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (aMInstance != null)
+        if (instance != null)
         {
             SendSoundsToAMInstance();
             Destroy(gameObject);
             return;
         }
-        else { aMInstance = this; }
+        else { instance = this; }
 
         DontDestroyOnLoad(gameObject);
 
@@ -32,13 +32,13 @@ public class AudioManager : MonoBehaviour
     #region Singleton Management
     private void SendSoundsToAMInstance()
     {
-        aMInstance.CleanSoundDictionaries();
+        instance.CleanSoundDictionaries();
 
-        aMInstance.sfx.AddRange(sfx);
-        aMInstance.music.AddRange(music);
-        aMInstance.dialogues.AddRange(dialogues);
+        instance.sfx.AddRange(sfx);
+        instance.music.AddRange(music);
+        instance.dialogues.AddRange(dialogues);
         
-        aMInstance.SortSoundLists();
+        instance.SortSoundLists();
     }
     #endregion
 

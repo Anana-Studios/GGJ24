@@ -40,7 +40,7 @@ public class AudioRequester : MonoBehaviour
     {
         try
         {
-            _sourceToUse = AudioManager.aMInstance.SendSoundSource(_soundListDictionary[listToSearch.ToString()], soundFile);
+            _sourceToUse = AudioManager.instance.SendSoundSource(_soundListDictionary[listToSearch.ToString()], soundFile);
         }
         catch 
         {

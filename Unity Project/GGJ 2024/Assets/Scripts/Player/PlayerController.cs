@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private bool _grabbingObj = false;
     private Camera m_Camera;
     private Rigidbody _rigidbody;
+
+    private Image _playerPointer;
 
     private Vector2 _moveInput = Vector2.zero;
     private bool _grabInput = false, _throwInput = false;
@@ -40,6 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         m_Camera = Camera.main;
         _rigidbody = GetComponent<Rigidbody>();
+        _playerPointer = GetComponentInChildren<Image>();
     }
 
     private void Update()
@@ -63,12 +67,7 @@ public class PlayerController : MonoBehaviour
     {
         if(_grabInput && _objInReach != null && !_objInReach.isGrabbed)
         {
-            _objInReach.isGrabbed = true;
-            _objInReach.GetComponent<Rigidbody>().useGravity = false;
-            _objInReach.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-            _objInReach.transform.position = grabPivot.position;
-            _objInReach.transform.rotation = grabPivot.rotation;
-            _objInReach.transform.SetParent(grabPivot.transform, true);
+            _objInReach.ObjGrabbed(grabPivot);
             _grabbingObj = true;
         }
     }
@@ -80,5 +79,15 @@ public class PlayerController : MonoBehaviour
             _objInReach.ResetObj();
             _objInReach.GetComponent<Rigidbody>().AddForce((transform.forward + Vector3.up) * throwForce, ForceMode.Impulse);
         }
+    }
+
+
+    public void TeleportPlayer(Vector3 newPos)
+    {
+        transform.position = newPos;
+    }
+    public void SetPointerColour(Color plyrColour)
+    {
+        _playerPointer.color = plyrColour;
     }
 }

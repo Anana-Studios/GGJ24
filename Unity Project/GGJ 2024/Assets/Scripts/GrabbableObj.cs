@@ -27,6 +27,16 @@ public class GrabbableObj : MonoBehaviour
             other.GetComponentInParent<PlayerController>()._objInReach = null;
         }
     }
+    public void ObjGrabbed(Transform playerTransform)
+    {
+        isGrabbed = true;
+        rb.useGravity = false;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        transform.position = playerTransform.position;
+        transform.rotation = playerTransform.rotation;
+        transform.SetParent(playerTransform, true);
+        StopCoroutine(GetComponent<ObjectController>()._coroutine);
+    }
     public void ResetObj()
     {
         isGrabbed = false;
