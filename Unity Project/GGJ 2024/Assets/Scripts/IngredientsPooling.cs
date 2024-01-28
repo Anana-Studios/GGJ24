@@ -54,9 +54,14 @@ public class IngredientsPooling : MonoBehaviour
     {
        
             int randomIndex = Random.Range(0, _ingredients.Length);
-       
             
+           if (_currentIndex!=randomIndex && !_ingredients[randomIndex].activeInHierarchy)
+           {
+            _currentIndex = randomIndex;
             return _ingredients[randomIndex];
+           }
+           else return GetPooledObject();
+           
             
         
     }

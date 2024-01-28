@@ -56,6 +56,7 @@ public class ObjectController : MonoBehaviour
         if (collision.gameObject.CompareTag("CuttingZone") && _needsCut && collision.gameObject.GetComponent<CZone>().canUse)
         {
             _needsCut = false;
+            _mf.mesh = _newMesh;
             SetPrepare(collision);
         }      
         if (collision.gameObject.CompareTag("CookingZone") && _needsCook && collision.gameObject.GetComponent<CZone>().canUse)
@@ -74,7 +75,7 @@ public class ObjectController : MonoBehaviour
     public void SetPrepare(Collision collision)
     {
         StopCoroutine(_coroutine);
-        _mf.mesh = _newMesh;
+       
         CheckReadiness();
         collision.gameObject.GetComponent<CZone>().newIngredient = this.gameObject;
         collision.gameObject.GetComponent<CZone>().StartPreparing();
