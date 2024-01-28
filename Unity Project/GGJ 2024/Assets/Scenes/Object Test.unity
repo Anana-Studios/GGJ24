@@ -252,10 +252,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e298efdcc11c11342a685d3afde772f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientPrefab: {fileID: 1438852291624236456, guid: 4cf4a208c38414649a5fdea059432b8a, type: 3}
+  onionPrefab: {fileID: 7328162678524861247, guid: 6c99357a6a2b63e43b8f71fa29d8bf6c, type: 3}
+  chiliPrefab: {fileID: 8499276668792596748, guid: ec054c45cd28a2840b31bfda2905d243, type: 3}
+  beansPrefab: {fileID: 1573845042091584848, guid: 82b3b7df5542d8d4082151fdced4deab, type: 3}
+  sausagePrefab: {fileID: 5120829859716827158, guid: 5e7a2b71a85c8fd489601b40459e3f6f, type: 3}
   supplyPosition: {fileID: 1272132692}
-  _amount: 3
-  _timer: 3
+  _amount: 5
+  _timer: 2
+  _minForce: 1
+  _maxForce: 2
 --- !u!65 &282200338
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -326,15 +331,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282200336}
-  m_LocalRotation: {x: 0.39761388, y: -0, z: -0, w: 0.9175529}
-  m_LocalPosition: {x: 0, y: 0, z: -3.22}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1272132692}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 46.858, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &487018087
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,7 +855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1272132692}
   m_Layer: 0
-  m_Name: SupplPos
+  m_Name: SupplyPos
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -864,7 +869,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272132691}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.23, z: -0.5}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

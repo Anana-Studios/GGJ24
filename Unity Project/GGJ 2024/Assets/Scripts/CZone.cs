@@ -44,7 +44,7 @@ public class CZone : MonoBehaviour
 
     IEnumerator Preparing()
     {
-        yield return new WaitForSecondsRealtime(_timer);
+        yield return new WaitForSeconds(_timer);
         EndPreparing();
         StopCoroutine(Preparing());
     }

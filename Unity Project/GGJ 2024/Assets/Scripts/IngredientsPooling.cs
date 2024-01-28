@@ -5,65 +5,93 @@ using UnityEngine;
 
 public class IngredientsPooling : MonoBehaviour
 {
+   
+
+    public GameObject onionPrefab, chiliPrefab, beansPrefab, sausagePrefab;
+
     [Header("Pool Parameters")]
 
-    public GameObject ingredientPrefab;
     public Transform supplyPosition;
-    private List<GameObject> _ingredients= new List<GameObject>();
+    private GameObject[] _ingredients;
 
-    [SerializeField] private int _amount = 10;
+    [SerializeField] private int _amount = 5;
 
 
     [Header("Values")]
 
-    private bool _canSupply = true;
-    [SerializeField] private float _timer=1;
+    private int _currentIndex = 0;
+    [SerializeField] private float _timer = 1;
+    [SerializeField] private float _minForce=0, _maxForce=0.8f;
 
     private void Awake()
     {
-        for (int i = 0; i < _amount; i++)
-        {
-            GameObject newIngredient = Instantiate(ingredientPrefab);
-            _ingredients.Add(newIngredient);    
-            newIngredient.SetActive(false);
-        }
-    }
+        InitializeIngredients(onionPrefab, chiliPrefab, beansPrefab, sausagePrefab);
 
+    }
+    private void Start()
+    {
+        StartCoroutine(WaitForSupply());
+    }
     [ContextMenu("Get New Ingredient")]
     public void GetIngredient()
-    {  
+    {
         var newIngredient = GetPooledObject();
-        if (_canSupply && newIngredient != null)
-        {
-            _canSupply = false;
+        if (newIngredient != null)
+        {      
             newIngredient.transform.position = supplyPosition.position;
             newIngredient.GetComponent<Rigidbody>().velocity = Vector3.zero;
             newIngredient.SetActive(true);
-            if (newIngredient.GetComponent<ObjectController>()!=null) newIngredient.GetComponent<ObjectController>().Initialize();
+            if (newIngredient.GetComponent<ObjectController>() != null) newIngredient.GetComponent<ObjectController>().Initialize();
+            newIngredient.GetComponent<Rigidbody>().AddForce(launchForce(), ForceMode.Impulse);
         }
         else
         {
             Debug.Log("Wait For Supplies");
         }
-        StartCoroutine(WaitForSupply());
     }
 
     public GameObject GetPooledObject()
     {
-        for (int i = 0; i < _amount; i++)
-        {
-            if (!_ingredients[i].activeInHierarchy)
-            {
-                return _ingredients[i];
-            }
-        }
-        return null;
+       
+            int randomIndex = Random.Range(0, _ingredients.Length);
+       
+            
+            return _ingredients[randomIndex];
+            
+        
+    }
+
+    private Vector3 launchForce()
+    {
+        float x = Random.Range(-_maxForce, _maxForce);
+        float y = Random.Range(_minForce, _maxForce);
+        float z = Random.Range(-_maxForce, _maxForce);
+
+        return new Vector3(x, y, z);
     }
 
     IEnumerator WaitForSupply()
     {
-        yield return new WaitForSecondsRealtime(_timer);
-        _canSupply = true;
-        StopCoroutine(WaitForSupply());
+        while (true)
+        {
+            yield return new WaitForSeconds(_timer);
+          GetIngredient();
+        }
     }
+
+    private void InitializeIngredients(params GameObject[] prefabs)
+    {
+        _ingredients = new GameObject[prefabs.Length * _amount];
+
+        for (int j = 0; j < prefabs.Length; j++)
+        {
+            for (int i = 0; i < _amount; i++)
+            {
+                GameObject newIngredient = Instantiate(prefabs[j]);
+                _ingredients[j * _amount + i] = newIngredient;
+                newIngredient.SetActive(false);
+            }
+        }
+    }
+
 }

@@ -88,7 +88,7 @@ public class ObjectController : MonoBehaviour
 
     IEnumerator Deactivate()
     {
-        yield return new WaitForSecondsRealtime(_timeToRot);
+        yield return new WaitForSeconds(_timeToRot);
         gameObject.SetActive(false);
         StopCoroutine(Deactivate());
 
