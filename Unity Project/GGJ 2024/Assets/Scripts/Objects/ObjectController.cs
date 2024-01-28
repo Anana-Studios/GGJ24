@@ -12,6 +12,9 @@ public class ObjectController : MonoBehaviour
     [SerializeField] private Mesh _firstMesh, _newMesh;
 
     [Header("Values")]
+
+    [SerializeField] private bool isSausage = false;
+
     [SerializeField] private bool _isLaunched = false, _isReady=false;
     [SerializeField] private bool _needsCut = true, _needsCook = true;
     private bool _needsCutO, _needsCookO;
@@ -58,6 +61,10 @@ public class ObjectController : MonoBehaviour
             _needsCut = false;
             _mf.mesh = _newMesh;
             SetPrepare(collision);
+            if (isSausage)
+            {
+                _needsCook = true;
+            }
         }      
         if (collision.gameObject.CompareTag("CookingZone") && _needsCook && collision.gameObject.GetComponent<CZone>().canUse)
         {
