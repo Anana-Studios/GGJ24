@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class ObjectController : MonoBehaviour
 {
+    [SerializeField] private string _typeOfIngredient="";
+
     public Coroutine _coroutine;
 
     [Header("Meshes")]
@@ -42,7 +44,14 @@ public class ObjectController : MonoBehaviour
     {
         if(!_needsCut && !_needsCook) _isReady = true; 
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (_isReady && other.CompareTag("PlayerZone"))
+        {
+            other.GetComponent<PlayerZone>().CheckIngredient(_typeOfIngredient);
+            gameObject.SetActive(false);
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (_isLaunched)
