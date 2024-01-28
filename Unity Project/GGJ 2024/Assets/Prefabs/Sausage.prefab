@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5120829859716827153}
   - component: {fileID: 5120829859716827152}
   - component: {fileID: 5120829859716827155}
-  - component: {fileID: 5120829859716827154}
   - component: {fileID: 5120829859716827157}
   - component: {fileID: 5120829859716827156}
   - component: {fileID: 5120829859716827159}
+  - component: {fileID: 3962674298029867691}
   m_Layer: 0
   m_Name: Sausage
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5120829859716827158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2029047, y: 0.64, z: -0.007819649}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5120829859716827158}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 3659640168455282510, guid: 08b170a1abbbbd54abc0a202c5a5c3e0, type: 3}
 --- !u!23 &5120829859716827155
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -87,19 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5120829859716827154
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5120829859716827158}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5120829859716827157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,11 +128,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612d26992c53d3c41a9a84343950942d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  _newMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  _firstMesh: {fileID: 3659640168455282510, guid: 08b170a1abbbbd54abc0a202c5a5c3e0, type: 3}
+  _newMesh: {fileID: -6415556374723166846, guid: f1b4cca802f0e5945a382ba72cb9730c, type: 3}
+  isSausage: 1
   _isLaunched: 0
   _isReady: 0
   _needsCut: 1
-  _needsCook: 1
+  _needsCook: 0
   _weight: 0.5
   _timeToRot: 25
+--- !u!136 &3962674298029867691
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5120829859716827158}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1.5
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.17716, z: 0}

@@ -7,6 +7,7 @@ TagManager:
   - GrabZone
   - CuttingZone
   - CookingZone
+  - PlayerZone
   layers:
   - Default
   - TransparentFX
